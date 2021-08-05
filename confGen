@@ -1,0 +1,87 @@
+#!/usr/bin/python3
+
+# NOKIA SIP PROV GENERATOR
+# Copyright (C) 2021  Dovi Cowan
+# nokiasip@catch.dovicowan.email
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+import os
+import subprocess
+import argparse
+
+print("NOKIA SIP PROV GENERATOR\nCopyright (C) 2021  Dovi Cowan\nThis program comes with ABSOLUTELY NO WARRANTY.\nThis is free software, and you are welcome to redistribute it\nunder certain conditions.")
+
+devices = os.listdir('templates/')
+
+args = argparse.ArgumentParser('./confGen', description="Generate provisioning files for Nokia SIP")
+args.add_argument('device', help="Device type", type=str, choices=devices)
+args.add_argument('--provName', help="Name for provisioning profile (default 'Nokia SIP')", type=str)
+args.add_argument('username', help="SIP Username", type=str)
+args.add_argument('password', help="SIP Password", type=str)
+args.add_argument('server', help="SIP Server", type=str)
+args.add_argument('--port', help="SIP Port (default 5060)", type=int)
+args.add_argument('--proxy', help="SIP Proxy", type=str)
+args.add_argument('--proxyPort', help="SIP Proxy Port (default 5060)", type=str)
+args.add_argument('--output', help="Output file (default config.prov)", type=str)
+args.add_argument('--provURI', help=argparse.SUPPRESS)
+args = args.parse_args()
+args = vars(args)
+
+with open('templates/'+args['device']+'.xml', 'r') as file:
+    data = file.read().replace('\n', '')
+
+if args['provName'] is None:
+    data.replace("{NAME}",'Nokia SIP')
+else:
+    data.replace("{NAME}",args['provName'])
+
+if args['port'] is None:
+    data.replace("{PORT}",str(5060))
+    proxyport = 5060
+else:
+    data.replace("{PORT}",args['port'])
+    proxyport = args['port']
+
+if args['proxy'] is None:
+    data.replace("{REGISTRAR}",args['server'])
+else:
+    data.replace("{REGISTRAR}",args['proxy'])
+
+if args['proxyPort'] is None:
+    data.replace("{REGISTRAR_PORT}",str(proxyport))
+else:
+    data.replace("{REGISTRAR_PORT}",args['proxyPort'])
+
+# This will give an option for "Service Homepage" on the phone
+if args['provURI'] is None:
+    data.replace("{PROV_URI}", 'http://projects.fnukhosting.net/nokiasip/prov.php?devicetype='+args['device'])
+else:
+    data.replace("{PROV_URI}",args['provURI'])
+
+data.replace("{DOMAIN}",args['server'])
+data.replace("{USER}",args['username'])
+data.replace("{PASSWORD}",args['password'])
+
+# prov = wbxml.xml_to_wbxml(data)
+
+data = data.encode(encoding='utf8')
+
+if args['output'] is not None:
+    outputFile = args['output']
+else:
+    outputFile = 'config.prov'
+
+prov = subprocess.Popen(["./libwbxml/bin/xml2wbxml", "-o"+outputFile, "-"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+prov = prov.communicate(input=bytes(data))[0]

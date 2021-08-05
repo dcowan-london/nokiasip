@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<!DOCTYPE wap-provisioningdoc PUBLIC "-//WAPFORUM//DTD PROV 1.0//EN" "http://www.wapforum.org/DTD/prov.dtd">
+<wap-provisioningdoc version="1.1">
+ <characteristic type="BOOTSTRAP">
+  <parm name="NAME" value="{NAME}"/>
+ </characteristic>
+ <characteristic type="APPLICATION">
+  <parm name="APPID" value="w9013"/>
+  <parm name="PROVIDER-ID" value="{NAME}"/>
+  <parm name="NAME" value="{NAME}"/>
+  <parm name="TO-NAPID" value="INTERNET"/>
+  <parm name="TO-APPREF" value="SIP_1627421660"/>
+  <parm name="SMPORT" value="16384"/>
+  <parm name="EMPORT" value="32766"/>
+  <parm name="MEDIAQOS" value="46"/>
+  <parm name="SECURECALLPREF" value="0"/>
+  <parm name="RTCP" value="0"/>
+  <parm name="RTCP-XR-VOIP-METRICS" value="0"/>
+  <parm name="MOMAXALERT" value="45"/>
+  <parm name="MTMAXALERT" value="30"/>
+  <parm name="AMR-FEC" value="0"/>
+  <parm name="AMR-WB-FEC" value="0"/>
+  <parm name="ALLOWVOIPOVERWCDMA"/>
+  <parm name="PROVIDERURI" value="{PROV_URI}"/>
+  <characteristic type="CODEC">
+   <parm name="MEDIASUBTYPE" value="11"/>
+   <parm name="PRIORITYINDEX" value="0"/>
+   <parm name="OCTET-ALIGN"/>
+   <parm name="VAD"/>
+  </characteristic>
+  <characteristic type="CODEC">
+   <parm name="MEDIASUBTYPE" value="0"/>
+   <parm name="PRIORITYINDEX" value="1"/>
+   <parm name="OCTET-ALIGN"/>
+   <parm name="VAD"/>
+  </characteristic>
+  <characteristic type="CODEC">
+   <parm name="MEDIASUBTYPE" value="1"/>
+   <parm name="PRIORITYINDEX" value="2"/>
+   <parm name="VAD"/>
+  </characteristic>
+  <characteristic type="CODEC">
+   <parm name="MEDIASUBTYPE" value="10"/>
+   <parm name="PRIORITYINDEX" value="3"/>
+   <parm name="ANNEXB"/>
+  </characteristic>
+  <characteristic type="CODEC">
+   <parm name="MEDIASUBTYPE" value="3"/>
+   <parm name="PRIORITYINDEX" value="4"/>
+   <parm name="VAD"/>
+  </characteristic>
+  <characteristic type="CODEC">
+   <parm name="MEDIASUBTYPE" value="4"/>
+   <parm name="PRIORITYINDEX" value="5"/>
+   <parm name="VAD"/>
+  </characteristic>
+  <characteristic type="CODEC">
+   <parm name="MEDIASUBTYPE" value="12"/>
+   <parm name="PRIORITYINDEX" value="6"/>
+   <parm name="VAD"/>
+  </characteristic>
+  <characteristic type="CODEC">
+   <parm name="MEDIASUBTYPE" value="13"/>
+   <parm name="PRIORITYINDEX" value="7"/>
+   <parm name="VAD"/>
+  </characteristic>
+  <characteristic type="CODEC">
+   <parm name="MEDIASUBTYPE" value="5"/>
+   <parm name="PRIORITYINDEX" value="8"/>
+   <parm name="VAD"/>
+  </characteristic>
+  <characteristic type="CODEC">
+   <parm name="MEDIASUBTYPE" value="6"/>
+   <parm name="PRIORITYINDEX" value="9"/>
+   <parm name="VAD"/>
+  </characteristic>
+  <characteristic type="CODEC">
+   <parm name="MEDIASUBTYPE" value="7"/>
+   <parm name="PRIORITYINDEX" value="10"/>
+   <parm name="VAD"/>
+  </characteristic>
+  <characteristic type="CODEC">
+   <parm name="MEDIASUBTYPE" value="8"/>
+   <parm name="PRIORITYINDEX" value="11"/>
+   <parm name="VAD"/>
+  </characteristic>
+  <characteristic type="CODEC">
+   <parm name="MEDIASUBTYPE" value="9"/>
+   <parm name="PRIORITYINDEX" value="12"/>
+  </characteristic>
+ </characteristic>
+ <characteristic type="APPLICATION">
+  <parm name="APPID" value="w902E"/>
+  <parm name="NAME" value="NAT/FW Traversal settings"/>
+  <characteristic type="NW">
+   <parm name="APPREF" value="NAT_FW_1627421660"/>
+   <parm name="DOMAIN" value="{DOMAIN}"/>
+   <parm name="STUNSRVADDR" value="0.0.0.0"/>
+   <parm name="STUNSRVPORT" value="3478"/>
+   <parm name="NATREFRESHTCP" value="30"/>
+   <parm name="NATREFRESHUDP" value="20"/>
+  </characteristic>
+  <characteristic type="NATIAP">
+   <parm name="TO-NAPID" value="INTERNET"/>
+   <parm name="REFRESHTCP" value="1200"/>
+   <parm name="REFRESHUDP" value="28"/>
+   <parm name="STUNRETRANSMIT" value="250"/>
+  </characteristic>
+ </characteristic>
+ <characteristic type="APPLICATION">
+  <parm name="APPID" value="w9010"/>
+  <parm name="APPREF" value="SIP_1627421660"/>
+  <parm name="PROVIDER-ID" value="{NAME}"/>
+  <parm name="TO-NAPID" value="INTERNET"/>
+  <parm name="PTYPE" value="IETF"/>
+  <parm name="PUID" value="sip:{USER}@{DOMAIN}"/>
+  <parm name="APROTOCOL" value="UDP"/>
+  <parm name="SIGQOS" value="40"/>
+  <characteristic type="APPADDR">
+   <parm name="LR"/>
+   <parm name="ADDR" value=""/>
+   <characteristic type="PORT">
+    <parm name="PORTNBR" value="{PORT}"/>
+   </characteristic>
+  </characteristic>
+  <characteristic type="APPAUTH">
+   <parm name="AAUTHNAME" value="{USER}"/>
+   <parm name="AAUTHSECRET" value="{PASSWORD}"/>
+   <parm name="AAUTHDATA" value=""/>
+   <parm name="AAUTHTYPE" value="HTTP-DIGEST"/>
+  </characteristic>
+  <characteristic type="RESOURCE">
+   <parm name="URI" value="{REGISTRAR}:{REGISTRAR_PORT}"/>
+   <parm name="AAUTHNAME" value="{USER}"/>
+   <parm name="AAUTHSECRET" value="{PASSWORD}"/>
+   <parm name="AAUTHDATA" value=""/>
+   <parm name="AAUTHTYPE" value="HTTP-DIGEST"/>
+  </characteristic>
+ </characteristic>
+</wap-provisioningdoc>
