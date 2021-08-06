@@ -1,5 +1,7 @@
-# Nokia SIP
-This is a script to generate configurations for SIP on older Nokia phones.
+# Nokia S40 SIP
+This is a script to generate configurations for SIP on older Nokia (S40) phones.
+
+Note that not all S40 devices are SIP compatible. See [Compatible devices](#compatible-devices) below for more info.
 
 Currently supported phones are:
 * Nokia 208 Dual-SIM
@@ -90,7 +92,27 @@ optional arguments:
   --output OUTPUT       Output file (default config.prov)
   ```
 
-## Supporting more phones
+## Compatible devices
+The following S40 devices are believed to support SIP.
+
+* Nokia 6260 Slide
+* Nokia 6300i
+* Nokia 207
+* Nokia 208 (Single SIM and Dual SIM)
+* Nokia Asha 210 (Single SIM and Dual SIM)
+* Nokia Asha 302
+* Nokia Asha 303
+* Nokia Asha 309
+* Nokia Asha 310
+* Nokia Asha 311
+* Nokia 515 (Single SIM and Dual SIM)
+* Nokia C3-01 Touch and Type
+* Nokia C3-01 Gold Edition
+* Nokia X3-01 Touch and Type
+
+More info is available at [VoIP-info.org](https://voip-info.org/nokia).
+
+### Supporting more phones
 Create a new file in `templates/`. Use format "`{device}.xml`" for the file name.
 
 You can use the following parameters anywhere in the file, which will be replaced by `confGen`:
@@ -109,4 +131,5 @@ You can use the following parameters anywhere in the file, which will be replace
 * STUN
 * Custom SIP expiry
 * TCP
+* Custom RTP Codecs
 * Pushing generic configurations and then allowing the user to sign into an account directly on-device
