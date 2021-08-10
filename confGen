@@ -25,6 +25,8 @@ print("NOKIA SIP PROV GENERATOR\nCopyright (C) 2021  Dovi Cowan\nThis program co
 
 devices = os.listdir('templates/')
 
+devices = [i.split('.', 1)[0] for i in devices]
+
 args = argparse.ArgumentParser('./confGen', description="Generate provisioning files for Nokia SIP")
 args.add_argument('device', help="Device type", type=str, choices=devices)
 args.add_argument('--provName', help="Name for provisioning profile (default 'Nokia SIP')", type=str)
