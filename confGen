@@ -45,36 +45,36 @@ with open('templates/'+args['device']+'.xml', 'r') as file:
     data = file.read().replace('\n', '')
 
 if args['provName'] is None:
-    data.replace("{NAME}",'Nokia SIP')
+    data = data.replace("{NAME}",'Nokia SIP')
 else:
-    data.replace("{NAME}",args['provName'])
-
+    data = data.replace("{NAME}",args['provName'])
+    
 if args['port'] is None:
-    data.replace("{PORT}",str(5060))
+    data = data.replace("{PORT}",str(5060))
     proxyport = 5060
 else:
-    data.replace("{PORT}",args['port'])
+    data = data.replace("{PORT}",args['port'])
     proxyport = args['port']
 
 if args['proxy'] is None:
-    data.replace("{REGISTRAR}",args['server'])
+    data = data.replace("{REGISTRAR}",args['server'])
 else:
-    data.replace("{REGISTRAR}",args['proxy'])
+    data = data.replace("{REGISTRAR}",args['proxy'])
 
 if args['proxyPort'] is None:
-    data.replace("{REGISTRAR_PORT}",str(proxyport))
+    data = data.replace("{REGISTRAR_PORT}",str(proxyport))
 else:
-    data.replace("{REGISTRAR_PORT}",args['proxyPort'])
+    data = data.replace("{REGISTRAR_PORT}",args['proxyPort'])
 
 # This will give an option for "Service Homepage" on the phone
 if args['provURI'] is None:
-    data.replace("{PROV_URI}", 'http://projects.fnukhosting.net/nokiasip/prov.php?devicetype='+args['device'])
+    data = data.replace("{PROV_URI}", 'http://projects.fnukhosting.net/nokiasip/prov.php?devicetype='+args['device'])
 else:
-    data.replace("{PROV_URI}",args['provURI'])
+    data = data.replace("{PROV_URI}",args['provURI'])
 
-data.replace("{DOMAIN}",args['server'])
-data.replace("{USER}",args['username'])
-data.replace("{PASSWORD}",args['password'])
+data = data.replace("{DOMAIN}",args['server'])
+data = data.replace("{USER}",args['username'])
+data = data.replace("{PASSWORD}",args['password'])
 
 # prov = wbxml.xml_to_wbxml(data)
 
